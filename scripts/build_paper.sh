@@ -2,18 +2,18 @@
 # build_paper.sh -- build the paper and its submission files into dist/.
 #
 #   dist/star-forming-bipartite_final2.pdf             the compiled paper
-#   dist/star-forming-bipartite_final2-tex.zip         main.tex with the figure as PNG (and its TikZ source)
-#   dist/star-forming-bipartite_final2-arxiv.tar.gz    main.tex and the PNG figure, ready for arXiv
+#   dist/star-forming-bipartite_final2-tex.zip         main.tex with the figures as PNG (and their TikZ sources)
+#   dist/star-forming-bipartite_final2-arxiv.tar.gz    main.tex and the PNG figures, ready for arXiv
 #
-# Needs pdflatex with amsart, tikz (shadings), booktabs and hyperref; pdftoppm (poppler) for the
-# PNG figure; zip and tar.
+# Needs pdflatex with amsart, tikz (shadings, calc), booktabs and hyperref; pdftoppm (poppler) for the
+# PNG figures; zip and tar.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PAPER="$ROOT/preprint"
 DIST="$ROOT/dist"
 NAME=star-forming-bipartite_final2
-FIGS="g3"
+FIGS="g3 k3sharp"
 mkdir -p "$DIST"
 
 latex() { pdflatex -interaction=nonstopmode -halt-on-error "$@" > /dev/null; }
@@ -41,7 +41,7 @@ cp main.pdf "$DIST/$NAME.pdf"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
-echo "== tex.zip (figure as PNG)"
+echo "== tex.zip (figures as PNG)"
 mkdir -p "$STAGE/$NAME/figures"
 cp main.tex "$STAGE/$NAME/"
 for f in $FIGS; do cp "figures/$f.png" "figures/$f.tex" "$STAGE/$NAME/figures/"; done

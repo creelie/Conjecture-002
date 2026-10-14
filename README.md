@@ -12,7 +12,9 @@ every k, the case k = 1 being the theorem Γ = α of Cockayne, Favaron, Payan an
 10-vertex bipartite graph in
 [the-omega-institute/trureturing pull request 14727](https://github.com/the-omega-institute/trureturing/pull/14727).
 
-This repository answers both questions and proves his chain-graph conjecture.
+This repository answers both questions, proves his chain-graph conjecture, and settles his
+Problem 9.3 on the complexity of SF_2. Sahbi withdrew the preprint on 12 October 2026 (arXiv v3,
+comment "Some conjectures in this paper have been disproved"); the problems are cited from v2.
 
 **Conjecture 4.1 fails for every k ≥ 3 as well, and the answer to Problem 7.3 is no.** For every
 k ≥ 2 the connected bipartite graph G_k on 3k + 3 vertices below has β_k(G_k) = 2k + 2 and a
@@ -56,6 +58,24 @@ vertex of I ∩ X forces its neighbour among p, c_1, c_2 out of I.
 The SF_k column is computed exactly over all subsets (`data/family_values.txt`); the theorem itself
 only uses SF_k ≥ 3k.
 
+**Problem 9.3: computing SF_2 is NP-hard on bipartite graphs.** Sahbi asked whether it is
+NP-complete to decide, for a bipartite graph G and an integer t, whether G has a minimal
+2-star-forming set with at least t vertices. It is (Theorem 1.4 of the paper). For a graph H with n
+vertices and m edges let H# be H with every edge uv replaced by a path u a b c v and a pendant vertex
+v' attached to every vertex v. Then H# is bipartite, has 2n + 3m vertices, is planar when H is, and
+
+    β_2(H#) = SF_2(H#) = n + 2m + α(H).
+
+So H has an independent set of size t exactly when H# has a minimal 2-star-forming set of size
+n + 2m + t, and Independent Set (NP-complete by Karp, also on planar graphs by Garey, Johnson and
+Stockmeyer) reduces to the problem; membership in NP is immediate because minimality only has to be
+checked against single-vertex deletions. The proof of the upper bound: in a minimal 2-star-forming set
+S, (a) v or v' is in S; (b) no edge has all three of a, b, c in S; (c) an edge whose ends u, v have
+u, u', v, v' all in S has at most one of a, b, c in S. Counting with Y = {v : v, v' ∈ S} gives
+|S| ≤ n + |Y| + 2m − e(H[Y]) ≤ n + 2m + α(H). The lower bound is the 2-independent set made of the
+pendant vertices, a largest independent set I of H, every middle vertex b, and on each edge the inner
+vertex next to its first end unless that end is in I, when it is the one next to the second end.
+
 ## What is proved, and how
 
 The paper (`preprint/main.tex`, built into `dist/`) proves everything by hand. The Lean 4 proofs with
@@ -68,7 +88,16 @@ theorem betaK_family (k : ℕ) (hk : 3 ≤ k) :
 
 theorem sfK_eq_betaK_of_isChain [Fintype V] (hG : IsChain G side) (hk : 2 ≤ k) :
     sfK G k = betaK G k
+
+theorem sfK_gadget {W : Type*} [LinearOrder W] {H : SimpleGraph W} [DecidableRel H.Adj] [Fintype W] :
+    (gadget H).Colorable 2 ∧
+      sfK (gadget H) 2 = Fintype.card W + 2 * #H.edgeFinset + H.indepNum ∧
+      betaK (gadget H) 2 = Fintype.card W + 2 * #H.edgeFinset + H.indepNum
 ```
+
+`gadget H` is H#, with the edges oriented by the linear order of the vertices and `H.indepNum` the
+independence number of Mathlib. The NP-completeness itself, which follows from this identity, is not
+formalised.
 
 Here `IsChain G side` says that every edge joins the two sides given by `side : V → Bool` and that
 the neighbourhoods of the vertices on the side `false` are nested.
@@ -84,6 +113,11 @@ the neighbourhoods of the vertices on the side `false` are nested.
 | I_0 is k-independent with 2k + 2 vertices | `StarForming.kIndep_I0`, `StarForming.card_I0` |
 | G_k has 3k + 3 vertices | `StarForming.card_W` |
 | minimality reduces to one-point deletions | `StarForming.isMinimalStarForming_of_erase` |
+| β_2(H#) = SF_2(H#) = n + 2m + α(H) (Theorem 1.4) | `StarForming.sfK_gadget` |
+| Lemma 5.1, the set J(I) | `StarForming.kIndep_J`, `StarForming.card_J` |
+| Lemma 5.2 and the counting | `StarForming.not_all_inner`, `StarForming.card_le_of_minimal` |
+| H# is bipartite | `StarForming.gadget_colorable` |
+| β_1 = α, and the edge count of H | `StarForming.betaK_one_eq_indepNum`, `StarForming.card_edge` |
 | SF_k = β_k on chain graphs, every k ≥ 2 (Theorem 1.3) | `StarForming.sfK_eq_betaK_of_isChain` |
 | Lemma 4.1 (exchange, any graph) | `StarForming.exists_kIndep_of_unique_high` |
 | Lemma 4.2 | `StarForming.deg_add_two_le` |
@@ -92,7 +126,7 @@ the neighbourhoods of the vertices on the side `false` are nested.
 | β_k ≤ SF_k (Chellali–Favaron) | `StarForming.betaK_le_sfK`, `StarForming.isMinimalStarForming_of_maximal` |
 | Lemma 2.1 (local form of the definition) | `StarForming.starAt_iff_covered` |
 
-`lean/Check.lean` prints the axioms of eighteen theorems and `scripts/audit_axioms.py` checks that
+`lean/Check.lean` prints the axioms of twenty-six theorems and `scripts/audit_axioms.py` checks that
 only `propext`, `Classical.choice` and `Quot.sound` occur (`verification/axioms.txt`).
 
 Independent checks outside Lean (`scripts/run_all.sh`):
@@ -104,6 +138,12 @@ Independent checks outside Lean (`scripts/run_all.sh`):
   k-star-forming sets are closed upward, and checks the k = 2 example of pull request 14727.
 - `verification/c/chainlemmas.c`: checks Lemmas 4.1–4.3 on every minimal k-star-forming set of every
   chain graph with at most 12 vertices, 2 ≤ k ≤ 7 (`data/chain_lemmas.txt`).
+- `verification/c/sharpcheck.c`: builds H# for every connected graph H with 2n + 3m ≤ 26 and
+  computes α(H), β_2(H#) and SF_2(H#) over all subsets, checking Theorem 1.4 and parts (a)–(c) of
+  Lemma 5.2 on every minimal 2-star-forming set (`data/sharp_values.txt`).
+- `verification/python/check_sharp_sat.py`: the same identity with a SAT solver (python-sat);
+  `scripts/searches.sh sharp` runs it on every connected graph H with at most 8 vertices, and the
+  outputs for up to 7 vertices are in `data/search/sharp-sat-*.txt`.
 - `scripts/searches.sh`: exhaustive searches with nauty, below.
 
 ## Searches
@@ -119,6 +159,7 @@ proof.
 | triangle-free, k = 3 | up to 11 vertices | smallest: 10 vertices (two graphs) |
 | chain graphs, 3 ≤ k ≤ 8 | up to 16 vertices | none, as Theorem 1.3 says |
 | trees, 2 ≤ k ≤ 6 | up to 16 vertices | none |
+| H# for connected H, k = 2 | H up to 7 vertices (SAT) | none; β_2 = SF_2 = n + 2m + α(H) every time |
 
 ## Layout
 
@@ -128,13 +169,14 @@ lean/                          Lean 4 + Mathlib (v4.34.1)
   StarForming/Local.lean       Lemma 2.1, β_k and SF_k, β_k ≤ SF_k, the exchange Lemma 4.1
   StarForming/Family.lean      the graphs G_k
   StarForming/Chain.lean       chain graphs: Lemmas 4.2, 4.3 and Theorem 1.3
+  StarForming/Hardness.lean    the graphs H#: Lemmas 5.1, 5.2 and the identity of Theorem 1.4
   StarForming/Summary.lean     both answers stated with β_k and SF_k
   Check.lean                   axiom audit
-verification/c/                sfcheck.c, sfsearch.c, chainlemmas.c
-verification/python/           check_definition.py
+verification/c/                sfcheck.c, sfsearch.c, chainlemmas.c, sharpcheck.c
+verification/python/           check_definition.py, check_sharp_sat.py
 verification/axioms.txt        output of Check.lean
-data/                          family_values.txt, chain_lemmas.txt, search/
-preprint/                      the paper (amsart) and its TikZ figure
+data/                          family_values.txt, chain_lemmas.txt, sharp_values.txt, search/
+preprint/                      the paper (amsart) and its two TikZ figures
 dist/                          the paper as PDF, as LaTeX with a PNG figure, and as an arXiv tarball
 scripts/                       run_all.sh, searches.sh, chain_graphs.py, build_paper.sh, audit_axioms.py
 PRIORITY-CHECK.md              the dated check that the question was still open
@@ -153,6 +195,7 @@ ORCID [0000-0003-0466-750X](https://orcid.org/0000-0003-0466-750X).
 
 The k = 2 counterexample is due to the author of pull request 14727 and is only checked here. The
 author used Claude (Anthropic) to find the construction by computer search, to check it in C, Python
-and Lean, to find and formalise the proof for chain graphs, and to draft the text; the author verified every step and is responsible for the content.
+and Lean, to find and formalise the proof for chain graphs and the reduction for Problem 9.3, and
+to draft the text; the author verified every step and is responsible for the content.
 
 MIT License.
