@@ -1,0 +1,7 @@
+J??CF@w}Fo? k=4 beta=8 SF=9 S=67f
+J??CF`{~Fw? k=4 beta=7 SF=8 S=677
+J??ED`oyEo? k=2 beta=6 SF=7 S=1fc
+J??ED_{nDw? k=4 beta=8 SF=9 S=67f
+J??EFa{~Fw? k=4 beta=7 SF=8 S=67e
+J?AFBrw}Fo? k=4 beta=7 SF=8 S=33f
+graphs 32303 unequal 6

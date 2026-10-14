@@ -1,0 +1,6 @@
+chain graphs up to 12 vertices, k = 2: 42239 minimal sets, 0 failures
+chain graphs up to 12 vertices, k = 3: 209755 minimal sets, 0 failures
+chain graphs up to 12 vertices, k = 4: 334835 minimal sets, 0 failures
+chain graphs up to 12 vertices, k = 5: 214115 minimal sets, 0 failures
+chain graphs up to 12 vertices, k = 6: 85043 minimal sets, 0 failures
+chain graphs up to 12 vertices, k = 7: 35829 minimal sets, 0 failures

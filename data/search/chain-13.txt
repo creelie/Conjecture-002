@@ -1,0 +1,1 @@
+graphs 2048 unequal 0
