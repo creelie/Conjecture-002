@@ -4,7 +4,7 @@ import re
 import sys
 
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
-EXPECTED = 18
+EXPECTED = 26
 
 text = open(sys.argv[1]).read()
 if "sorryAx" in text or "error" in text:

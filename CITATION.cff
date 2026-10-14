@@ -8,7 +8,7 @@ authors:
     orcid: "https://orcid.org/0000-0003-0466-750X"
     affiliation: "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India"
     email: d.bhattacharjee@erl-forschung.de
-version: 1.0.0
+version: 1.1.0
 doi: "10.5281/zenodo.23356026"
 identifiers:
   - type: doi
@@ -26,6 +26,7 @@ keywords:
   - upper domination
   - bipartite graph
   - chain graph
+  - NP-completeness
   - counterexample
   - Lean 4
 abstract: >-
@@ -33,7 +34,9 @@ abstract: >-
   bipartite graphs, and in particular on chain graphs, and asked whether they agree for k = 3 on
   triangle-free graphs. For every k >= 3 we give a connected bipartite graph on 3k + 3 vertices with
   k-independence number 2k + 2 and a minimal k-star-forming set of size 3k. On chain graphs, however,
-  the two numbers agree for every k. Both results are formalised in Lean 4 with Mathlib.
+  the two numbers agree for every k. Finally, deciding whether a bipartite graph has a minimal
+  2-star-forming set of a given size is NP-complete. The results are formalised in Lean 4 with
+  Mathlib, the complexity result through the identity it rests on.
 references:
   - type: article
     title: "Upper k-star-forming sets, k-independence, and upper domination"
@@ -43,7 +46,8 @@ references:
     year: 2026
     identifiers:
       - type: other
-        value: "arXiv:2610.03785"
+        value: "arXiv:2610.03785v2"
+    notes: "Withdrawn by the author on 12 October 2026"
   - type: article
     title: "On k-star-forming sets in graphs"
     authors:

@@ -31,7 +31,7 @@ triangle-free classes?).
 | zbMATH | title "star-forming" | Chellali–Favaron, J. Combin. Math. Combin. Comput. 68 (2009) 205–214, Zbl 1176.05052, which introduces SF_k, proves β_k ≤ SF_k and studies trees, chordal graphs and K_{1,r}-free graphs |
 | Web search | the paper's terms with "counterexample", "β_3", "triangle-free" | only the paper and the OpenRefute items |
 | OpenRefute, rechecked 03:00 UTC | issues and pull requests mentioning `2610.03785` | still only #14706 and #14727, neither about chain graphs |
-| arXiv abstract page, rechecked 03:00 UTC | 2610.03785 | still v2 (6 October 2026); the abstract keeps the chain-graph case open for k ≥ 3 |
+| arXiv abstract page, rechecked 03:00 UTC | 2610.03785 | read as v2 (6 October 2026); the abstract keeps the chain-graph case open for k ≥ 3. This was a misreading: see the correction below |
 | Web search, 03:00 UTC | "star-forming" with "chain graph", k-independence, Sahbi | nothing on k-star-forming sets in chain graphs |
 
 The full text of Chellali–Favaron (2009) was not available to us; its zbMATH summary does not mention
@@ -39,3 +39,35 @@ bipartite graphs, and Sahbi, who cites it, poses the bipartite equality as open.
 
 **Conclusion.** As of 14 October 2026 no counterexample for k ≥ 3, no answer to Problem 7.3 and no
 proof of Conjecture 6.4 for k ≥ 3 was found in any of these sources.
+
+## Correction: the preprint was withdrawn
+
+Rechecked 14 October 2026, 06:24 UTC: the arXiv page of 2610.03785 lists v1 (30 September 2026),
+v2 (6 October 2026, 15:49 UTC) and v3 (12 October 2026, 20:05 UTC, withdrawn by the author, comment
+"Some conjectures in this paper have been disproved"). The entry above that reads v2 as the latest
+version was wrong; v3 was already posted. The withdrawal does not answer any of the questions; the
+paper and this repository cite the problems from v2.
+
+## Problem 9.3 (complexity of SF_2 on bipartite graphs)
+
+Done on 14 October 2026, 06:20–06:30 UTC, after the reduction was found and formalised and before
+the write-up.
+
+**Question.** Sahbi, Problem 9.3 (v2): determine the complexity of computing SF_2 on bipartite
+graphs; in particular, is it NP-complete to decide, for a bipartite graph G and an integer t, whether
+G has a minimal 2-star-forming set with at least t vertices?
+
+| Source | Query | Result |
+|---|---|---|
+| OpenRefute (github.com/the-omega-institute/trureturing) | pull requests mentioning `2610.03785`; issues on star-forming sets, NP-completeness, Sahbi | only #14727 and #14706 (k = 2 counterexample); nothing on Problem 9.3 |
+| arXiv | abstracts containing "star-forming" in math.CO, newest first | only Sahbi's paper |
+| Zenodo | "star-forming" with Sahbi, k-independence or dissociation | only this repository's v1.0.0 record |
+| Web search | "star-forming" set, NP-complete, bipartite, minimal 2-star-forming | nothing on k-star-forming sets; only star packing and star partition problems |
+| Sahbi's paper (v2) | its complexity remarks and references | Problem 9.3 is posed as open; the cited works (Boliac–Cameron–Lozin, Kardoš–Katrenič–Schiermeyer) concern β_2, the dissociation number, not SF_2 |
+
+**Related known results, cited in the paper.** Computing β_2 (the dissociation number) is NP-hard on
+bipartite graphs (Yannakakis, SIAM J. Comput. 10 (1981) 310–327). Independent Set is NP-complete
+(Karp 1972), also on planar graphs (Garey, Johnson and Stockmeyer, Theoret. Comput. Sci. 1 (1976)
+237–267).
+
+**Conclusion.** As of 14 October 2026 no answer to Problem 9.3 was found in any of these sources.

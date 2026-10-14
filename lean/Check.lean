@@ -24,3 +24,12 @@ import StarForming
 #print axioms StarForming.exists_kIndep_of_unique_high
 #print axioms StarForming.starAt_iff_covered
 #print axioms StarForming.isMinimalStarForming_of_erase
+-- NP-hardness on bipartite graphs (Problem 9.3): the gadget identity, every graph H
+#print axioms StarForming.sfK_gadget
+#print axioms StarForming.card_le_of_minimal
+#print axioms StarForming.kIndep_J
+#print axioms StarForming.card_J
+#print axioms StarForming.not_all_inner
+#print axioms StarForming.gadget_colorable
+#print axioms StarForming.card_edge
+#print axioms StarForming.betaK_one_eq_indepNum
