@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Upper k-star-forming sets and k-independence in bipartite graphs"
+type: software
+authors:
+  - family-names: Bhattacharjee
+    given-names: Deep
+    orcid: "https://orcid.org/0000-0003-0466-750X"
+    affiliation: "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India"
+    email: d.bhattacharjee@erl-forschung.de
+version: 1.0.0
+date-released: 2026-10-14
+license: MIT
+repository-code: "https://github.com/creelie/Conjecture-002"
+keywords:
+  - k-independence
+  - k-star-forming set
+  - upper domination
+  - bipartite graph
+  - chain graph
+  - counterexample
+  - Lean 4
+abstract: >-
+  Sahbi conjectured that the k-independence number and the upper k-star-forming number agree on
+  bipartite graphs, and in particular on chain graphs, and asked whether they agree for k = 3 on
+  triangle-free graphs. For every k >= 3 we give a connected bipartite graph on 3k + 3 vertices with
+  k-independence number 2k + 2 and a minimal k-star-forming set of size 3k. On chain graphs, however,
+  the two numbers agree for every k. Both results are formalised in Lean 4 with Mathlib.
+references:
+  - type: article
+    title: "Upper k-star-forming sets, k-independence, and upper domination"
+    authors:
+      - family-names: Sahbi
+        given-names: Rafik
+    year: 2026
+    identifiers:
+      - type: other
+        value: "arXiv:2610.03785"
+  - type: article
+    title: "On k-star-forming sets in graphs"
+    authors:
+      - family-names: Chellali
+        given-names: Mustapha
+      - family-names: Favaron
+        given-names: Odile
+    year: 2009
+    journal: "Journal of Combinatorial Mathematics and Combinatorial Computing"
+    volume: 68
+    start: 205
+    end: 214

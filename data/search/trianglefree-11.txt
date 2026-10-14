@@ -1,0 +1,19 @@
+J??CFBWMas? k=3 beta=7 SF=8 S=1bf
+J??CF?]{Bo? k=3 beta=7 SF=8 S=7a7
+J??CF?]Faw? k=3 beta=7 SF=8 S=7dc
+J??CBb_Ef?? k=3 beta=8 SF=9 S=7b7
+J??CBbKM`s? k=3 beta=7 SF=8 S=6fc
+J??FCpoy?\? k=3 beta=7 SF=8 S=2bf
+J?AA@qoRD_? k=3 beta=8 SF=9 S=7cf
+J?AFF@oFF_? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFFO? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFEo? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFBo? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFFo? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFBg? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFBw? k=3 beta=7 SF=8 S=3d7
+J?AFF@oFF?_ k=3 beta=7 SF=8 S=3d7
+J?AFEo{VFo? k=3 beta=6 SF=7 S=df
+J?AFEo{VBw? k=3 beta=6 SF=7 S=df
+J?ABbR_FF_? k=3 beta=7 SF=8 S=5cf
+graphs 105071 unequal 18
