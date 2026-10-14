@@ -141,9 +141,9 @@ Independent checks outside Lean (`scripts/run_all.sh`):
 - `verification/c/sharpcheck.c`: builds H# for every connected graph H with 2n + 3m ≤ 26 and
   computes α(H), β_2(H#) and SF_2(H#) over all subsets, checking Theorem 1.4 and parts (a)–(c) of
   Lemma 5.2 on every minimal 2-star-forming set (`data/sharp_values.txt`).
-- `verification/python/check_sharp_sat.py`: the same identity with a SAT solver (python-sat), for
-  every connected graph H with at most 8 vertices (`scripts/searches.sh sharp`, outputs
-  `data/search/sharp-sat-*.txt`).
+- `verification/python/check_sharp_sat.py`: the same identity with a SAT solver (python-sat);
+  `scripts/searches.sh sharp` runs it on every connected graph H with at most 8 vertices, and the
+  outputs for up to 7 vertices are in `data/search/sharp-sat-*.txt`.
 - `scripts/searches.sh`: exhaustive searches with nauty, below.
 
 ## Searches
@@ -159,7 +159,7 @@ proof.
 | triangle-free, k = 3 | up to 11 vertices | smallest: 10 vertices (two graphs) |
 | chain graphs, 3 ≤ k ≤ 8 | up to 16 vertices | none, as Theorem 1.3 says |
 | trees, 2 ≤ k ≤ 6 | up to 16 vertices | none |
-| H# for connected H, k = 2 | H up to 8 vertices (SAT) | none; β_2 = SF_2 = n + 2m + α(H) every time |
+| H# for connected H, k = 2 | H up to 7 vertices (SAT) | none; β_2 = SF_2 = n + 2m + α(H) every time |
 
 ## Layout
 
