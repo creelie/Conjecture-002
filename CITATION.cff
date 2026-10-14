@@ -9,8 +9,11 @@ authors:
     affiliation: "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India"
     email: d.bhattacharjee@erl-forschung.de
 version: 1.1.0
-doi: "10.5281/zenodo.23356026"
+doi: "10.5281/zenodo.23360032"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23360032"
+    description: "Version 1.1.0"
   - type: doi
     value: "10.5281/zenodo.23356026"
     description: "Version 1.0.0"

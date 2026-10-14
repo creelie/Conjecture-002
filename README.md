@@ -1,8 +1,8 @@
 # Upper k-star-forming sets and k-independence in bipartite graphs
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23356026.svg)](https://doi.org/10.5281/zenodo.23356026)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23360032.svg)](https://doi.org/10.5281/zenodo.23360032)
 
-Release v1.0.0: [doi:10.5281/zenodo.23356026](https://doi.org/10.5281/zenodo.23356026) (all versions: [doi:10.5281/zenodo.23356025](https://doi.org/10.5281/zenodo.23356025)).
+Release v1.1.0, which adds the answer to Problem 9.3: [doi:10.5281/zenodo.23360032](https://doi.org/10.5281/zenodo.23360032). Release v1.0.0: [doi:10.5281/zenodo.23356026](https://doi.org/10.5281/zenodo.23356026). All versions: [doi:10.5281/zenodo.23356025](https://doi.org/10.5281/zenodo.23356025).
 
 R. Sahbi, *Upper k-star-forming sets, k-independence, and upper domination*,
 [arXiv:2610.03785](https://arxiv.org/abs/2610.03785), conjectured (Conjecture 4.1) that the
@@ -142,8 +142,8 @@ Independent checks outside Lean (`scripts/run_all.sh`):
   computes α(H), β_2(H#) and SF_2(H#) over all subsets, checking Theorem 1.4 and parts (a)–(c) of
   Lemma 5.2 on every minimal 2-star-forming set (`data/sharp_values.txt`).
 - `verification/python/check_sharp_sat.py`: the same identity with a SAT solver (python-sat);
-  `scripts/searches.sh sharp` runs it on every connected graph H with at most 8 vertices, and the
-  outputs for up to 7 vertices are in `data/search/sharp-sat-*.txt`.
+  `scripts/searches.sh sharp` runs it on every connected graph H with at most 8 vertices (11,117
+  graphs on 8 vertices), with the outputs in `data/search/sharp-sat-*.txt`.
 - `scripts/searches.sh`: exhaustive searches with nauty, below.
 
 ## Searches
@@ -159,7 +159,7 @@ proof.
 | triangle-free, k = 3 | up to 11 vertices | smallest: 10 vertices (two graphs) |
 | chain graphs, 3 ≤ k ≤ 8 | up to 16 vertices | none, as Theorem 1.3 says |
 | trees, 2 ≤ k ≤ 6 | up to 16 vertices | none |
-| H# for connected H, k = 2 | H up to 7 vertices (SAT) | none; β_2 = SF_2 = n + 2m + α(H) every time |
+| H# for connected H, k = 2 | H up to 8 vertices (SAT) | none; β_2 = SF_2 = n + 2m + α(H) every time |
 
 ## Layout
 
