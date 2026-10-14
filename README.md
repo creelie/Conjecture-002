@@ -1,5 +1,9 @@
 # Upper k-star-forming sets and k-independence in bipartite graphs
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23356026.svg)](https://doi.org/10.5281/zenodo.23356026)
+
+Release v1.0.0: [doi:10.5281/zenodo.23356026](https://doi.org/10.5281/zenodo.23356026) (all versions: [doi:10.5281/zenodo.23356025](https://doi.org/10.5281/zenodo.23356025)).
+
 R. Sahbi, *Upper k-star-forming sets, k-independence, and upper domination*,
 [arXiv:2610.03785](https://arxiv.org/abs/2610.03785), conjectured (Conjecture 4.1) that the
 k-independence number β_k and the upper k-star-forming number SF_k agree on every bipartite graph and
